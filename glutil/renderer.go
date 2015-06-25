@@ -6,10 +6,12 @@ import (
 )
 
 type Renderer struct {
+	scene *Scene
+	camera *Camera
 }
 
-func NewRenderer() *Renderer {
-	renderer := Renderer{}
+func NewRenderer(scene *Scene, camera *Camera) *Renderer {
+	renderer := Renderer{scene, camera}
 
 	// Initialize Glow
 	if err := gl.Init(); err != nil {

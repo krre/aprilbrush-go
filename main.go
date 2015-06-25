@@ -70,7 +70,9 @@ func main() {
 		}
 	})
 
-	renderer := glutil.NewRenderer()
+	camera := glutil.NewCamera()
+	scene := glutil.NewScene()
+	renderer := glutil.NewRenderer(scene, camera)
 
 	for !window.ShouldClose() {
 		renderer.Render()
