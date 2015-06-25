@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-gl/gl/v3.3-core/gl"
 	"github.com/go-gl/glfw/v3.1/glfw"
+	"github.com/krre/aprilbrush-go/brushengine"
 )
 
 func init() {
@@ -44,7 +45,7 @@ func main() {
 	window.SetCursorPosCallback(func(w *glfw.Window, xpos float64, ypos float64) {
 		mouseButtonState := window.GetMouseButton(glfw.MouseButtonLeft)
 		if mouseButtonState == glfw.Press {
-			fmt.Println(xpos, ypos)
+			brushengine.Paint(xpos, ypos)
 		}
 	})
 
