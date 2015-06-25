@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/go-gl/gl/v3.3-core/gl"
 	"github.com/go-gl/glfw/v3.1/glfw"
 	"github.com/krre/aprilbrush-go/brushengine"
+	"github.com/krre/aprilbrush-go/glutil"
 )
 
 func init() {
@@ -70,18 +70,10 @@ func main() {
 		}
 	})
 
-	// Initialize Glow
-	if err := gl.Init(); err != nil {
-		panic(err)
-	}
-
-	version := gl.GoStr(gl.GetString(gl.VERSION))
-	fmt.Println("OpenGL version:", version)
-
-	gl.ClearColor(0.6, 0.6, 0.6, 1.0)
+	renderer := glutil.NewRenderer()
 
 	for !window.ShouldClose() {
-		gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+		renderer.Render()
 
 		// Do OpenGL stuff
 		window.SwapBuffers()
